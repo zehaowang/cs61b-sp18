@@ -16,14 +16,7 @@ public class ArrayDequeTest {
         target.addLast(56);
 
         int r1 = target.get(0);
-//		target.addFirst(100);
-//		target.removeFirst(100);
-//		target.removeFirst(100);
-//		target.removeFirst(100);
-//		target.removeFirst(100);
-//		target.removeLast(100);
-//		target.removeLast(100);
-//
+
         target.printDeque();
     }
 

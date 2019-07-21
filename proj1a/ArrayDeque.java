@@ -95,6 +95,9 @@ public class ArrayDeque<T> {
      * @return
      */
     public T removeFirst() {
+        if (size < arr.length / 4) {
+            arr = resizeArray(size / 2);
+        }
         T res = arr[(nextFirst + 1) % arr.length];
         if (!isEmpty()) {
             arr[(nextFirst + 1) % arr.length] = null;
@@ -110,6 +113,9 @@ public class ArrayDeque<T> {
      * @return
      */
     public T removeLast() {
+        if (size < arr.length / 4) {
+            arr = resizeArray(size / 2);
+        }
         T res = arr[((nextLast - 1) + arr.length) % arr.length];
         if (!isEmpty()) {
             arr[((nextLast - 1) + arr.length) % arr.length] = null;

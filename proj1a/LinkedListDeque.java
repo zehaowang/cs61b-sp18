@@ -45,14 +45,14 @@ public class LinkedListDeque<T> {
      *
      * @param item
      */
-    public LinkedListDeque(T item) {
+    /*public LinkedListDeque(T item) {
         sentinel = new ListNode(null, null, null);
         sentinel.next = new ListNode(item, null, null);
         sentinel.prev = sentinel.next;
         sentinel.next.next = sentinel;
         sentinel.next.prev = sentinel;
         size = 1;
-    }
+    }*/
 
     /**
      * adds item to the front of the deque.
