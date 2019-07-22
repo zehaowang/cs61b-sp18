@@ -18,6 +18,11 @@ public class ArrayDequeTest {
         int r1 = target.get(0);
 
         target.printDeque();
+
+        target.removeFirst();
+        target.removeLast();
+        target.removeFirst();
+        target.printDeque();
     }
 
     @Test
@@ -49,6 +54,10 @@ public class ArrayDequeTest {
         target.addFirst(6);
         int r1 = target.removeFirst();
         int r2 = target.removeLast();
+        target.removeFirst();
+        target.removeFirst();
+        target.removeFirst();
+        target.removeFirst();
         target.printDeque();
 
     }

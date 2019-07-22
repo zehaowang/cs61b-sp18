@@ -23,13 +23,13 @@ public class ArrayDeque<T> {
      * @param size
      * @return
      */
-    private T[] resizeArray(int size) {
-        T[] a = (T[]) new Object[size];
+    private T[] resizeArray(int capacity) {
+        T[] a = (T[]) new Object[capacity];
         for (int i = 0; i < this.size; i++) {
             nextFirst = (nextFirst + 1) % arr.length;
             a[i] = arr[nextFirst];
         }
-        this.nextFirst = size - 1;
+        this.nextFirst = capacity - 1;
         this.nextLast = this.size;
         return a;
     }
@@ -41,7 +41,7 @@ public class ArrayDeque<T> {
      */
     public void addFirst(T item) {
         if (arr.length == size) {
-            arr = resizeArray(size * 2);
+            arr = resizeArray(arr.length * 2);
         }
         arr[nextFirst] = item;
         nextFirst = ((nextFirst - 1) + arr.length) % arr.length;
@@ -55,7 +55,7 @@ public class ArrayDeque<T> {
      */
     public void addLast(T item) {
         if (arr.length == size) {
-            arr = resizeArray(size * 2);
+            arr = resizeArray(arr.length * 2);
         }
         arr[nextLast] = item;
         nextLast = (nextLast + 1) % arr.length;
@@ -95,14 +95,15 @@ public class ArrayDeque<T> {
      * @return
      */
     public T removeFirst() {
-        if (size < arr.length / 4) {
-            arr = resizeArray(size / 2);
-        }
+
         T res = arr[(nextFirst + 1) % arr.length];
         if (!isEmpty()) {
             arr[(nextFirst + 1) % arr.length] = null;
             nextFirst = (nextFirst + 1) % arr.length;
             size--;
+        }
+        if (size < arr.length / 4) {
+            arr = resizeArray(arr.length / 2);
         }
         return res;
     }
@@ -113,14 +114,15 @@ public class ArrayDeque<T> {
      * @return
      */
     public T removeLast() {
-        if (size < arr.length / 4) {
-            arr = resizeArray(size / 2);
-        }
+
         T res = arr[((nextLast - 1) + arr.length) % arr.length];
         if (!isEmpty()) {
             arr[((nextLast - 1) + arr.length) % arr.length] = null;
             nextLast = ((nextLast - 1) + arr.length) % arr.length;
             size--;
+        }
+        if (size < arr.length / 4) {
+            arr = resizeArray(arr.length / 2);
         }
         return res;
     }
